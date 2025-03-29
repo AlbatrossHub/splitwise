@@ -1,0 +1,32 @@
+<odoo>
+    <record id="view_add_expense_wizard" model="ir.ui.view">
+        <field name="name">add.expense.wizard.form</field>
+        <field name="model">expense.add.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Add Expense">
+                <group>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <group>
+                        <field name="amount"/>
+                    </group>
+                    <group>
+                        <field name="expense_paid_by"/>
+                    </group>
+                    <group>
+                        <field name="participant_ids" widget="many2many_checkboxes" options="{'no_create': True}">
+                            <list>
+                                <field name="name"/>
+                            </list>
+                        </field>
+                    </group>
+                </group>
+                <footer>
+                    <button string="Create" type="object" name="action_create_expense" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

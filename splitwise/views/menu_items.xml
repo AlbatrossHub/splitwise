@@ -1,0 +1,18 @@
+<odoo>
+    <!-- Action Definition -->
+    <record id="action_expense_groups" model="ir.actions.act_window">
+        <field name="name">Expense Groups</field>
+        <field name="res_model">expense.group</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_iron_log" model="ir.actions.act_window">
+        <field name="name">Iron Log</field>
+        <field name="res_model">iron.log</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem id="menu_expense_sharing" name="Expense Sharing" sequence="1" web_icon="splitwise,static/icon.png"/>
+    <menuitem id="menu_expense_groups" name="Expense Groups" parent="menu_expense_sharing" action="action_expense_groups"/>
+    <menuitem id="menu_expense_groups_2" name="Iron Logs" parent="menu_expense_sharing" action="action_iron_log"/>
+</odoo>

@@ -1,0 +1,93 @@
+<odoo>
+    <!-- List View Definition -->
+    <record id="view_expense_group_list" model="ir.ui.view">
+        <field name="name">expense.group.list</field>
+        <field name="model">expense.group</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <button string="Add Expense" type="object" name="action_add_expense"/>
+                <field name="member_ids"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View Definition -->
+    <record id="view_expense_group_form" model="ir.ui.view">
+        <field name="name">expense.group.form</field>
+        <field name="model">expense.group</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_add_expense" type="object" string="Add Expense" class="oe_highlight"/>
+                    <button name="action_export_expenses" type="object" class="btn-primary" string="Export to CSV"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="member_ids" widget="many2many_tags"/>
+                    </group>
+                    <notebook>
+                        <page string="Expenses">
+                            <field name="expense_ids">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="amount"/>
+                                    <field name="participant_ids" widget="many2many_tags"/>
+                                </list>
+                                <form>
+                                    <group>
+                                        <field name="name"/>
+                                        <field name="amount"/>
+                                        <field name="participant_ids" widget="many2many_checkboxes" options="{'no_create': True}"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Splits">
+                            <field name="split_ids">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="amount"/>
+                                    <field name="split_amount"/>
+                                    <field name="user_id"/>
+                                    <field name="create_date"/>
+                                    <field name="write_date"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_expense_form" model="ir.ui.view">
+        <field name="name">expense.form</field>
+        <field name="model">expense.expense</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="amount"/>
+                        <field name="group_id"/>
+                        <field name="participant_ids" widget="many2many_checkboxes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_users_form_inherit_splitwise" model="ir.ui.view">
+        <field name="name">res.users.form.inherit.splitwise</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <field name="login" position="after">
+                <label for="list_in_splitwise" string="Access to splitwise?"/>
+                <field name="list_in_splitwise"/>
+            </field>
+        </field>
+    </record>
+</odoo>

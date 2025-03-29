@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_expense_group_user,access.expense.group.user,model_expense_group,base.group_user,1,1,1,1
+access_expense_expense_user,access.expense.expense.user,model_expense_expense,base.group_user,1,1,1,1
+access_expense_split_user,access.expense.split.user,model_expense_split,base.group_user,1,1,1,1
+access_expense_add_wizard_user,access.expense.add.wizard.user,model_expense_add_wizard,base.group_user,1,1,1,1
+access_expense_add_wizard_user,access.iron.log.user,model_iron_log,base.group_user,1,1,1,1
